@@ -1,0 +1,22 @@
+{
+    "refunds": {
+        "title": "Refund Policy",
+        "details": "CampusConnect does not define a universal refund period in this demo knowledge base. Refund eligibility depends on the relevant service and transaction. A support ticket is required for an individual refund inquiry.",
+        "requires_human_review": true
+    },
+    "payments": {
+        "title": "Payment Issues",
+        "details": "If a payment is deducted but an application remains unpaid, retain the transaction reference and confirmation. Support must review the transaction before a resolution can be promised.",
+        "requires_human_review": true
+    },
+    "applications": {
+        "title": "College Applications",
+        "details": "Admission requirements, application fees, and deadlines vary by institution. Students should verify current details with the institution's official website.",
+        "requires_human_review": false
+    },
+    "accounts": {
+        "title": "Account Access",
+        "details": "Users can try the Forgot Password flow to regain account access. Issues that remain unresolved should be sent to support.",
+        "requires_human_review": true
+    }
+}

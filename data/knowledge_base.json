@@ -1,0 +1,79 @@
+{
+    "product": {
+        "name": "CampusConnect",
+        "description": "A fictional platform that helps students explore colleges, discover courses, and manage application information."
+    },
+    "faqs": [
+        {
+            "id": "FAQ001",
+            "question": "How do I reset my password?",
+            "keywords": [
+                "password",
+                "reset",
+                "login",
+                "forgot password",
+                "account access"
+            ],
+            "answer": "Open the CampusConnect login page, select 'Forgot Password', and follow the instructions sent to your registered email address. If you do not receive the email, check your spam folder. If you still cannot access your account, contact support."
+        },
+        {
+            "id": "FAQ002",
+            "question": "How do I search for colleges?",
+            "keywords": [
+                "search college",
+                "find college",
+                "college discovery",
+                "universities",
+                "courses"
+            ],
+            "answer": "Open the college discovery section, enter your preferred course or location, and review the matching colleges. Check each institution's official website for the latest admission requirements."
+        },
+        {
+            "id": "FAQ003",
+            "question": "How do I apply to a college?",
+            "keywords": [
+                "apply",
+                "application",
+                "admission",
+                "submit application"
+            ],
+            "answer": "Select a college, review its admission requirements, and follow the application instructions displayed on CampusConnect. Requirements and deadlines may differ by institution."
+        },
+        {
+            "id": "FAQ004",
+            "question": "What should I do if my payment succeeded but my application is still unpaid?",
+            "keywords": [
+                "payment",
+                "deducted",
+                "unpaid",
+                "transaction",
+                "payment failed"
+            ],
+            "answer": "Keep your transaction reference and payment confirmation. Check your application status again after a short wait. If the status remains unpaid, contact support so the transaction can be reviewed. Do not share your card PIN, password, or one-time password."
+        },
+        {
+            "id": "FAQ005",
+            "question": "How do I update my profile?",
+            "keywords": [
+                "profile",
+                "update details",
+                "edit account",
+                "change email"
+            ],
+            "answer": "Sign in to CampusConnect, open your profile settings, update the available fields, and save your changes. If a field cannot be edited, contact support."
+        },
+        {
+            "id": "FAQ006",
+            "question": "How can I contact support?",
+            "keywords": [
+                "support",
+                "help",
+                "contact",
+                "human",
+                "agent",
+                "complaint"
+            ],
+            "answer": "You can use the support chat to find answers or create a support ticket. If the issue cannot be resolved through the available documentation, the assistant can record it for human follow-up."
+        }
+    ]
+}

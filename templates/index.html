@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect AI Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">C</div>
+                <div>
+                    <h1>CampusConnect</h1>
+                    <p>AI Support Center</p>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <p class="eyebrow">SUPPORT TOOLS</p>
+                <div class="tool-item">📚 <span>Knowledge Base</span></div>
+                <div class="tool-item">📋 <span>Policy Lookup</span></div>
+                <div class="tool-item">🎫 <span>Support Tickets</span></div>
+                <div class="tool-item">👥 <span>Human Escalation</span></div>
+            </div>
+
+            <div class="sidebar-note">
+                <span class="status-dot"></span>
+                <span>Support assistant ready</span>
+            </div>
+        </aside>
+
+        <section class="chat-panel">
+            <header class="topbar">
+                <div>
+                    <h2>Customer Support</h2>
+                    <p>Ask a question about CampusConnect</p>
+                </div>
+                <span class="online-badge">● Online</span>
+            </header>
+
+            <section id="messages" class="messages" aria-live="polite">
+                <div class="message assistant">
+                    <div class="avatar">C</div>
+                    <div class="bubble">
+                        <p>Hello! 👋 Welcome to CampusConnect support.</p>
+                        <p>I can help with account access, college applications,
+                            payments, and our documented policies.</p>
+                        <p>What can I help you with today?</p>
+                    </div>
+                </div>
+
+                <div class="suggestions">
+                    <button class="suggestion" data-message="How do I reset my password?">
+                        Reset my password
+                    </button>
+                    <button class="suggestion" data-message="What is your refund policy?">
+                        Refund policy
+                    </button>
+                    <button class="suggestion" data-message="My payment was deducted but my application says unpaid.">
+                        Payment problem
+                    </button>
+                </div>
+            </section>
+
+            <form id="chat-form" class="composer">
+                <textarea id="message-input" rows="1" maxlength="2000" placeholder="Type your question..."
+                    required></textarea>
+                <button id="send-button" type="submit">Send ↑</button>
+            </form>
+            <p class="disclaimer">AI-generated support · Demo product with fictional policies</p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
