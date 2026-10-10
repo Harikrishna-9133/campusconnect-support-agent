@@ -249,7 +249,15 @@ Expected behavior: The agent provides guidance, offers to create a support ticke
 
 ### Screenshots and Demo
 
-Add screenshots of the local Streamlit chat interface and the live tool activity panel here.
+
+## Screenshots
+
+### Chat Interface
+![CampusConnect chat interface](screenshots/chat-interface.png)
+
+### Live Tool Activity
+![Successful agent tool execution](screenshots/tool-activity.png)
+
 
 Demo video: To be added.
 
