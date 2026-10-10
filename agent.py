@@ -101,7 +101,25 @@ def build_assistant_message(message):
     return result
 
 
-def execute_tool(tool_name, arguments):
+
+def execute_tool(tool_name, arguments, on_tool_event=None):
+    tool_labels = {
+        "search_knowledge_base": "🔎 Searching the knowledge base...",
+        "get_policy_details": "📄 Looking up policy details...",
+        "create_support_ticket": "🎫 Creating a support ticket...",
+        "escalate_to_human": "🤝 Escalating to human review...",
+    }
+
+    if on_tool_event:
+        on_tool_event({
+            "type": "tool_start",
+            "tool": tool_name,
+            "message": tool_labels.get(
+                tool_name,
+                f"Running tool: {tool_name}"
+            ),
+        })
+
     print("\n" + "=" * 55)
     print("TOOL CALL:", tool_name)
     print("ARGUMENTS:", json.dumps(arguments, indent=2))
@@ -132,10 +150,21 @@ def execute_tool(tool_name, arguments):
             }
 
     print("TOOL RESULT:", json.dumps(result, indent=2))
+
+    if on_tool_event:
+        on_tool_event({
+            "type": "tool_result",
+            "tool": tool_name,
+            "success": result.get("success", False),
+            "result": result,
+        })
+
     return result
 
 
-def handle_tool_calls(message):
+
+
+def handle_tool_calls(message, on_tool_event=None):
     memory.add_message(build_assistant_message(message))
 
     for call in message.tool_calls:
@@ -146,9 +175,11 @@ def handle_tool_calls(message):
                 raise ValueError("Arguments must be a JSON object.")
 
             tool_name = call.function.name.split("<|")[0].strip()
+
             result = execute_tool(
                 tool_name,
-                arguments
+                arguments,
+                on_tool_event=on_tool_event
             )
 
         except (json.JSONDecodeError, ValueError):
@@ -157,6 +188,14 @@ def handle_tool_calls(message):
                 "error": "The model returned malformed tool arguments."
             }
 
+            if on_tool_event:
+                on_tool_event({
+                    "type": "tool_result",
+                    "tool": "unknown",
+                    "success": False,
+                    "result": result,
+                })
+
         memory.add_message({
             "role": "tool",
             "tool_call_id": call.id,
@@ -164,7 +203,8 @@ def handle_tool_calls(message):
         })
 
 
-def process_message(user_input):
+
+def process_message(user_input, on_tool_event=None):
     memory.add_message({
         "role": "user",
         "content": user_input
@@ -175,20 +215,24 @@ def process_message(user_input):
             message = ask_model()
         except Exception as error:
             print("MODEL ERROR:", str(error))
-            memory.add_message({
-                "role": "assistant",
-                "content": (
-                    "I'm temporarily unable to contact the support AI. "
-                    "Please try again shortly."
-                )
-            })
-            return (
+
+            error_message = (
                 "I'm temporarily unable to contact the support AI. "
                 "Please try again shortly."
             )
 
+            memory.add_message({
+                "role": "assistant",
+                "content": error_message
+            })
+
+            return error_message
+
         if message.tool_calls:
-            handle_tool_calls(message)
+            handle_tool_calls(
+                message,
+                on_tool_event=on_tool_event
+            )
             continue
 
         answer = message.content or (

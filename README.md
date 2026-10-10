@@ -190,3 +190,82 @@ CampusConnect is a fictional demonstration product. The FAQ content, policies, s
 ## Author
 
 Developed as a real-world task agent project to demonstrate AI tool calling, customer support automation, backend development, and automated testing.
+## Local Streamlit UI (Week 4)
+
+CampusConnect Support Agent includes a local Streamlit chat interface. Users can interact with the AI assistant through a browser without needing to use the command line for each request.
+
+### Features
+
+- Interactive chat interface with conversation history.
+- Live tool activity showing which tools are called and whether they succeed.
+- Knowledge-base search and policy lookup.
+- Support ticket creation and human escalation.
+- Local SQLite storage for support tickets and escalation records.
+
+### Model and Provider
+
+The application uses the Groq API through the OpenAI-compatible Python SDK. The configured model is `openai/gpt-oss-20b`.
+
+Groq provides hosted inference through an API, while the OpenAI-compatible interface lets the project use the familiar Python SDK.
+
+### Setup
+
+1. Install Python and clone the repository.
+2. Create and activate a virtual environment.
+3. Install dependencies:
+
+   ```powershell
+   python -m pip install -r requirements.txt
+   ```
+
+4. Create a `.env` file using `.env.example` as a template and set `GROQ_API_KEY` to your own API key.
+5. Run the application:
+
+   ```powershell
+   python -m streamlit run streamlit_app.py
+   ```
+
+6. Open the local URL displayed in the terminal, usually `http://localhost:8501`.
+
+### Example Interactions
+
+**Example 1 — Password reset**
+
+User: How do I reset my password?
+
+Expected behavior: The agent searches the knowledge base and returns the documented password-reset instructions.
+
+**Example 2 — Refund policy**
+
+User: What is your refund policy?
+
+Expected behavior: The agent looks up the refund policy and explains that individual refund inquiries require support review.
+
+**Example 3 — Payment issue**
+
+User: My payment was deducted, but my application still shows unpaid.
+
+Expected behavior: The agent provides guidance, offers to create a support ticket, and can escalate the ticket for human review after confirmation.
+
+### Screenshots and Demo
+
+Add screenshots of the local Streamlit chat interface and the live tool activity panel here.
+
+Demo video: To be added.
+
+### Testing
+
+Run the automated tests:
+
+```powershell
+python -m pytest tests/test_tools.py -v
+```
+
+Current result: 9 tests passed.
+
+### Security Notes
+
+- Keep the real `.env` file private.
+- Never commit API keys or local database files.
+- The project uses fictional CampusConnect policies for demonstration.
+- The local Streamlit server is intended for development and demonstration.

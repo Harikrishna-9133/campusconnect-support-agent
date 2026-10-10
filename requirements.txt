@@ -1,5 +1,6 @@
 
-flask
-openai
-python-dotenv
-pytest
+flask==3.1.2
+openai==2.14.0
+python-dotenv==1.2.1
+pytest==8.4.2
+streamlit==1.65.0
